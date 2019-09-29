@@ -6,4 +6,6 @@ import com.kontrakhukum.backendtest.model.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+	Customer findByName(String name);
+
 }
