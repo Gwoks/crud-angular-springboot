@@ -1,0 +1,3 @@
+INSERT INTO `customer`(`name`, `telephone`, `email`, `created_at`, `updated_at`) VALUES ('asdasd','123123','asdsa@asd.com',now(),now());
+INSERT INTO `ticket`(`film`, `date`, `start_time`, `finish_time`, `quantity`, `created_at`, `updated_at`) VALUES ('finding nemo',now(),now(),now(),30,now(),now());
+INSERT INTO `orders`(`ticket_id`, `customer_id`, `buy`, `created_at`, `updated_at`) VALUES (1,1,2,now(),now());

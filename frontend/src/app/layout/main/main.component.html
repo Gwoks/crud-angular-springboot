@@ -1,0 +1,121 @@
+<div class="container-fluid">
+
+  <form class="d-flex flex-direction: row justify-content-center mx-md-n5">
+
+    <div class="form-horizontal flex-fill px-md-5">
+
+      <div class="form-group row">
+        <label for="customerId" class="col-sm-2 col-form-label">Customer</label>
+        <div class="col-sm-10">
+
+          <div class="input-group">
+            <input type="text" aria-label="First name" class="form-control" id="customerId" [formControl]="customerId">
+            <div class="input-group-prepend" (click)="customerSearch()">
+              <span class="input-group-text">
+                <fa name="search"></fa>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+
+        <label for="customerName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="customerName" [value]="customer?.name" disabled>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+
+        <label for="customerPhone" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="customerPhone" [value]="customer?.telephone" disabled>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+
+        <label for="customerEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="customerEmail" [value]="customer?.email" disabled>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-horizontal flex-fill px-md-5">
+
+      <div class="form-group row">
+        <label for="filmId" class="col-sm-2 col-form-label">Film</label>
+        <div class="col-sm-10">
+
+          <div class="input-group">
+            <input type="text" aria-label="First name" class="form-control" id="filmId" [formControl]="filmId">
+            <div class="input-group-prepend" (click)="filmSearch()">
+              <span class="input-group-text">
+                <fa name="search"></fa>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+
+        <label for="filmName" class="col-sm-2 col-form-label">Film Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="filmName" [value]="ticket?.film" disabled>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+
+        <label for="filmTime" class="col-sm-2 col-form-label">Time</label>
+        <div class="col-sm-10">
+          <ng-container *ngIf="ticket; else elseTemplate">
+            <input type="text" class="form-control" id="filmTime"
+              [value]="ticket?.date + ' at ' + ticket?.startTime + ' until ' + ticket?.finishTime" disabled>
+          </ng-container>
+          <ng-template #elseTemplate>
+
+            <input type="text" class="form-control" id="filmTime" disabled>
+          </ng-template>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+
+        <label for="filmBuy" class="col-sm-2 col-form-label">Buy</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="filmBuy" [formControl]="filmBuy">
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <button (click)="onReset()" class="btn btn-primary">Reset</button>
+        </div>
+
+        <div class="col-sm-3">
+          <button (click)="onSubmit()" class="btn btn-primary">Order</button>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+
+
+  <p class="text-center">{{responseModel?.message}}</p>
+
+</div>
