@@ -19,4 +19,8 @@ export class TicketService {
   getTicket(id: string): Observable<Ticket> {
     return this.http.get<Ticket>(this.baseUrl + id);
   }
+
+  getAllTicket(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(this.baseUrl);
+  }
 }

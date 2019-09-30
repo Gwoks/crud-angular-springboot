@@ -65,17 +65,4 @@ public class Customer {
 	@LastModifiedDate
 	private Date updatedAt;
 
-	public Customer(@NotNull @NotEmpty String name, String telephone, @Email String email) {
-		super();
-		this.name = name;
-		this.telephone = telephone;
-		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", telephone=" + telephone + ", email=" + email
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
-	}
-
 }

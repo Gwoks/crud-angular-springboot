@@ -20,4 +20,7 @@ export class CustomerService {
     return this.http.get<Customer>(this.baseUrl + id);
   }
 
+  getAllCustomer(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.baseUrl);
+  }
 }

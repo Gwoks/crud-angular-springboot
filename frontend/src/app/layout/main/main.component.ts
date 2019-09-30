@@ -18,6 +18,8 @@ export class MainComponent implements OnInit {
   ticket: Ticket;
   orders: Order;
   responseModel: ResponseModel;
+  customers: Customer[];
+  tickets: Ticket[];
 
   constructor(
     private customerService: CustomerService,
@@ -29,7 +31,15 @@ export class MainComponent implements OnInit {
   filmId = new FormControl('', Validators.required);
   filmBuy = new FormControl('', Validators.required);
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.customerService.getAllCustomer().subscribe(cs => {
+      this.customers = cs;
+    });
+
+    this.ticketService.getAllTicket().subscribe(ts => {
+      this.tickets = ts;
+    });
+  }
 
   onSubmit() {
     let ticketId: number = this.filmId.value;
@@ -49,17 +59,21 @@ export class MainComponent implements OnInit {
 
   customerSearch() {
     let id = this.customerId.value;
-    this.customerService
-      .getCustomer(id)
-      .subscribe(response => (this.customer = response));
-
-    console.log(this.customer);
+    this.customer = this.findCustomerById(id, this.customers);
+    console.log(this.customers.find(x => x.id === id));
   }
 
   filmSearch() {
     let id = this.filmId.value;
-    this.ticketService
-      .getTicket(id)
-      .subscribe(response => (this.ticket = response));
+    this.ticket = this.findTicketById(id, this.tickets);
+    console.log(this.tickets.find(x => x.id === id));
+  }
+
+  findCustomerById(id: number, customers: Customer[]): Customer {
+    return customers.find(x => x.id === id);
+  }
+
+  findTicketById(id: number, tickets: Ticket[]): Ticket {
+    return tickets.find(x => x.id === id);
   }
 }
